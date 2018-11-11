@@ -5,7 +5,8 @@
  */
 
 var DEV_MODE = false;
-var PORT = process.env.PORT || 5000;
+// var PORT = process.env.PORT || 5000;
+var PORT = process.env.PORT || 8080;
 var FRAME_RATE = 1000.0 / 60.0;
 
 /**
