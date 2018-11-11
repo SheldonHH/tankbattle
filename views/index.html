@@ -130,8 +130,10 @@
         const transactionOptions = { authorization:[`${account.name}@${account.authority}`] };
         eos.transfer(account.name, 'helloworld', '1.0000 EOS', 'memo', transactionOptions).then(trx => {
           // That's it!
+            alert(JSON.stringify(trx))
           console.log(`Transaction ID: ${trx.transaction_id}`);
         }).catch(error => {
+            alert(JSON.stringify(error))
           console.error(error);
         });
       }).catch(error => {
