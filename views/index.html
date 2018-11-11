@@ -97,10 +97,11 @@
 
 {% block scripts %}
 <script src="https://cdn.scattercdn.com/file/scatter-cdn/js/latest/scatterjs-core.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/eosjs@16.0.9/lib/index.min.js"></script>
 <script src="https://cdn.scattercdn.com/file/scatter-cdn/js/latest/scatterjs-plugin-eosjs.min.js"></script>
 <script>
-    import { Eos } from 'eosjs';
   function loginTP(){
+
     const network = {
       blockchain:'eos',
       protocol:'https',
@@ -114,6 +115,7 @@
       alert('Eos'+JSON.stringify(Eos))
 
 
+      // import { Eos } from 'eosjs';
     ScatterJS.scatter.connect('My-App').then(connected => {
       if(!connected) {
           alert("false")
