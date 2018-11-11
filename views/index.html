@@ -109,6 +109,10 @@
     }
     ScatterJS.plugins( new ScatterEOS() );
     const connectionOptions = {initTimeout:10000};
+
+      alert('Eos'+JSON.stringify(Eos))
+
+
     ScatterJS.scatter.connect('My-App').then(connected => {
       if(!connected) {
           alert("false")
