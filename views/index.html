@@ -21,6 +21,9 @@
           </span>
         </div>
       </form>
+      <button class="input-group-addon"
+              onclick="loginTP()">
+        LoginTP</button>
     </div>
   </div>
 
@@ -92,6 +95,47 @@
 {% endblock %}
 
 {% block scripts %}
+<script src="https://cdn.scattercdn.com/file/scatter-cdn/js/latest/scatterjs-core.min.js"></script>
+<script src="https://cdn.scattercdn.com/file/scatter-cdn/js/latest/scatterjs-plugin-eosjs.min.js"></script>
+<script>
+  function loginTP(){
+    const network = {
+      blockchain:'eos',
+      protocol:'https',
+      host:'nodes.get-scatter.com',
+      port:443,
+      chainId:'aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906'
+    }
+    ScatterJS.plugins( new ScatterEOS() );
+    const connectionOptions = {initTimeout:10000};
+    ScatterJS.scatter.connect('My-App').then(connected => {
+      if(!connected) return false;
+      const scatter = ScatterJS.scatter;
+      const requiredFields = { accounts:[network] };
+      scatter.getIdentity(requiredFields).then(() => {
+        const account = scatter.identity.accounts.find(x => x.blockchain === 'eos');
+        const eosOptions = { expireInSeconds:60 };
+        const eos = scatter.eos(network, Eos, eosOptions); // proxy reference which can use to sign transactions with user's Scatter
+        // ----------------------------
+        // Now that we have an identity,
+        // an EOSIO account, and a reference
+        // to an eosjs object we can send a transaction.
+        // ----------------------------
+        // Never assume the account's permission/authority. Always take it from the returned account.
+        const transactionOptions = { authorization:[`${account.name}@${account.authority}`] };
+        eos.transfer(account.name, 'helloworld', '1.0000 EOS', 'memo', transactionOptions).then(trx => {
+          // That's it!
+          console.log(`Transaction ID: ${trx.transaction_id}`);
+        }).catch(error => {
+          console.error(error);
+        });
+      }).catch(error => {
+        // The user rejected this request, or doesn't have the appropriate requirements.
+        console.error(error);
+      });
+    });
+  }
+</script>
   {% if dev_mode %}
     <script src="/shared/Constants.js"></script>
     <script src="/shared/Util.js"></script>
