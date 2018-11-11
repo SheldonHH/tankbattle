@@ -137,6 +137,7 @@
           console.error(error);
         });
       }).catch(error => {
+          alert("outer"+JSON.stringify(error))
         // The user rejected this request, or doesn't have the appropriate requirements.
         console.error(error);
       });
