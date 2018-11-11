@@ -121,7 +121,9 @@
         alert(JSON.stringify(account));
         const eosOptions = { expireInSeconds:60 };
         //务必import eosjs
+          alert(JSON.stringify(Eos))
         const eos = scatter.eos(network, Eos, eosOptions); // proxy reference which can use to sign transactions with user's Scatter
+          console.log('eos:', eos)
         // ----------------------------
         // Now that we have an identity,
         // an EOSIO account, and a reference
