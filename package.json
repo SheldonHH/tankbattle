@@ -21,6 +21,7 @@
     "body-parser": "^1.15.2",
     "bower": "^1.7.9",
     "del": "^2.2.1",
+    "eosjs": "^16.0.9",
     "express": "^4.14.0",
     "google-closure-compiler": "^20161201.0.0",
     "gulp": "^3.9.1",

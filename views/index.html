@@ -120,6 +120,7 @@
         const account = scatter.identity.accounts.find(x => x.blockchain === 'eos');
         alert(JSON.stringify(account));
         const eosOptions = { expireInSeconds:60 };
+        //务必import eosjs
         const eos = scatter.eos(network, Eos, eosOptions); // proxy reference which can use to sign transactions with user's Scatter
         // ----------------------------
         // Now that we have an identity,
