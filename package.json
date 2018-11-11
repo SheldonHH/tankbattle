@@ -20,6 +20,8 @@
   "dependencies": {
     "body-parser": "^1.15.2",
     "bower": "^1.7.9",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.8.0",
     "del": "^2.2.1",
     "eosjs": "^16.0.9",
     "express": "^4.14.0",
@@ -40,5 +42,8 @@
     "socket.io": "^1.7.2",
     "swig": "^1.4.2",
     "vectors": "^0.1.0"
+  },
+  "parserOptions": {
+    "parser": "babel-eslint"
   }
 }
