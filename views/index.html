@@ -110,7 +110,10 @@
     ScatterJS.plugins( new ScatterEOS() );
     const connectionOptions = {initTimeout:10000};
     ScatterJS.scatter.connect('My-App').then(connected => {
-      if(!connected) return false;
+      if(!connected) {
+          alert("false")
+         return false;
+      }
       const scatter = ScatterJS.scatter;
       const requiredFields = { accounts:[network] };
       scatter.getIdentity(requiredFields).then(() => {
